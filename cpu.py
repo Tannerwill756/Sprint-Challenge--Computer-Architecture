@@ -2,13 +2,13 @@
 
 import sys
 
-# LDI: load "immediate", store a value in a register, or "set this register to this value".
+
 LDI = 0b10000010
-# PRN: a pseudo-instruction that prints the numeric value stored in a register.
+
 PRN = 0b01000111
 HLT = 0b00000001  # HLT: halt the CPU and exit the emulator.
 
-# day 2
+
 MUL = 0b10100010
 ADD = 0b10100000
 
@@ -25,7 +25,6 @@ SP = 7
 
 class CPU:
     """Main CPU class."""
-# day 1 Implement the CPU constructor , Add RAM functions ram_read() and ram_write()
 
     def __init__(self):
         # total CPU memory
@@ -56,17 +55,17 @@ class CPU:
             CMP: self.op_cmp,
         }
 
-    # day 1 should accept the address to read and return the value stored there. The MAR contains the address that is being read or written to. MAR = address = location
+    # accept the address to read and return the value stored there. The MAR contains the address that is being read or written to. MAR = address = location
     def ram_read(self, mar):
         return self.ram[mar]
 
-    # day 1 should accept a value to write, and the address to write it to. The MDR contains the data that was read or the data to write. MDR = value
+    # accept a value to write, and the address to write it to. The MDR contains the data that was read or the data to write. MDR = value
     def ram_write(self, mar, mdr):
         self.ram[mar] = mdr
 
     # Later on, you might do further initialization here, e.g. setting the initial value of the stack pointer.
 
-# day 2 Implement the load() function to load an .ls8 file given the filename passed in as an argument
+# Implement the load() function to load an .ls8 file given the filename passed in as an argument
     def load(self, file):
         """Load a program into memory."""
 
@@ -95,7 +94,7 @@ class CPU:
             print(f"{sys.argv[0]}: {file} not found")
             sys.exit(2)
 
-# day 3 math and comparison
+# math and comparison
 
     def alu(self, op, reg_a, reg_b):
         """ALU operations."""
@@ -137,7 +136,7 @@ class CPU:
 
         print()
 
-# day 1  Implement the core of run() # day 2 Implement a Multiply instruction (run mult.ls8)
+# Implement the core of run(), Implement a Multiply instruction (run mult.ls8)
     def run(self):
         # It needs to read the memory address that's stored in register PC, and store that result in IR, the Instruction Register. This can just be a local variable in run()
         while not self.stop:
